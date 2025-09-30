@@ -1,0 +1,7 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","14446","Test Case ID:04-Login and save session for User 1","user1Setup","Tue Sep 30 14:14:23 IST 2025","passed","Tue Sep 30 14:14:37 IST 2025","","authSetupForUser1.ts","",""
+"","14481","Test Case ID:06-Login and save session for User 3","user3Setup","Tue Sep 30 14:15:00 IST 2025","failed","Tue Sep 30 14:15:15 IST 2025","","authSetupForUser3.ts","",""
+"","1","Test Case ID:3-Verify user3 is logged in and storage state is working","chromium","Tue Sep 30 14:15:16 IST 2025","skipped","Tue Sep 30 14:15:16 IST 2025","Storage State for user3","example.spec.ts","",""
+"","0","Test Case ID:1-Verify user1 is logged in and storage state is working","chromium","Tue Sep 30 14:15:16 IST 2025","skipped","Tue Sep 30 14:15:16 IST 2025","Storage State for user1","example.spec.ts","",""
+"","19050","Test Case ID:05-Login and save session for User 2","user2Setup","Tue Sep 30 14:14:39 IST 2025","passed","Tue Sep 30 14:14:58 IST 2025","","authSetupForUser2.ts","",""
+"","0","Test Case ID:2-Verify user2 is logged in and storage state is working","chromium","Tue Sep 30 14:15:16 IST 2025","skipped","Tue Sep 30 14:15:16 IST 2025","Storage State for user2","example.spec.ts","",""

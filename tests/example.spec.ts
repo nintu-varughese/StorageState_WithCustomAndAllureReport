@@ -12,7 +12,7 @@ for (const num of userNumbers) {
     //Uses a pre-saved login session to skip manual login.
     test.use({ storageState: storageStatePath });
 
-    test(`Verify ${emailKey} is logged in and storage state is working`, async ({ page, context }) => {
+    test(`Test Case ID:${num}-Verify ${emailKey} is logged in and storage state is working`, async ({ page, context }) => {
       const home = new HomePage(page);
       const expectedEmail = process.env[emailKey]!;
 

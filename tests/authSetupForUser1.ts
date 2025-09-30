@@ -4,7 +4,7 @@ import HomePage from '../pages/homePage';
 //Defines the path where the browser session will be saved.
 const storageStatePath = 'storageState/user1.json';
 
-setup('Login and save session for User 1', async ({ page }) => {
+setup('Test Case ID:04-Login and save session for User 1', async ({ page }) => {
     const homePage = new HomePage(page);
 
     // Step 1: Go to home page
