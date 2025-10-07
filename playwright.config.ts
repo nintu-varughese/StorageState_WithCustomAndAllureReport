@@ -1,90 +1,51 @@
-// import { defineConfig, devices, ReporterDescription } from '@playwright/test';
-// import * as dotenv from 'dotenv';
-// import path from 'path';
-// dotenv.config();
-
-// const customReporter: ReporterDescription[] = [
-//   [path.join(__dirname, 'customReport.ts'), {}] // Use tuple with options
-// ];
-
-// export default defineConfig({
-//   testDir: './tests' ,
-//   fullyParallel: false,
-//   forbidOnly: !!process.env.CI,
-//   retries: process.env.CI ? 2 : 0,
-//   workers: process.env.CI ? 1 : undefined,
-//   reporter: customReporter, // ✅ now type-safe
-
-//   use: {
-//     trace: 'on-first-retry',
-//   },
-
-//   projects: [
-//     {
-//       name: 'user1Setup',
-//       testMatch: ['authSetupForUser1.ts'],
-//     },
-//     {
-//       name: 'user2Setup',
-//       testMatch: ['authSetupForUser2.ts'],
-//       dependencies: ['user1Setup'],
-//     },
-//     {
-//       name: 'user3Setup',
-//       testMatch: ['authSetupForUser3.ts'],
-//       dependencies: ['user2Setup'],
-//     },
-//     {
-//       name: 'chromium',
-//       use: { ...devices['Desktop Chrome'] },
-//       dependencies: ['user3Setup'],
-//     },
-//   ],
-// });
 import { defineConfig, devices, ReporterDescription } from '@playwright/test';
 import * as dotenv from 'dotenv';
 import path from 'path';
 dotenv.config();
-
-// Multiple reporters: custom + Allure
 const reporters: ReporterDescription[] = [
-  [path.join(__dirname, 'customReport.ts'), {}],        // ✅ Your custom reporter
-  ['allure-playwright', { outputFolder: 'allure-results' }] // ✅ Allure reporter
+  ['allure-playwright', {
+    outputFolder: 'allure-results',
+    detail: false,
+    suiteTitle: false,
+    useCucumberStepReporter: false,
+    useStepsForHooks: false,
+    screenshots: 'on',
+    videos: 'on'
+  }]
 ];
-
 export default defineConfig({
   testDir: './tests',
-  fullyParallel: false,
+  fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
-  reporter: reporters, // Use both reporters
+  reporter: reporters,
 
   use: {
-    trace: 'on-first-retry',
-    screenshot: 'only-on-failure', // Attach screenshots automatically
-    video: 'retain-on-failure',    // Attach videos on failure
+    trace: 'on-first-retry',       // optional, set to 'on-first-retry' if needed
+    screenshot: 'on',  // disable automatic screenshots in Allure if you want cleaner steps
+    video: 'on',      // disable automatic videos
   },
 
   projects: [
     {
-      name: 'user1Setup',
+      //name: 'SaveCookiesForUser1',
       testMatch: ['authSetupForUser1.ts'],
     },
     {
-      name: 'user2Setup',
+      //name: 'SaveCookiesForUser2',
       testMatch: ['authSetupForUser2.ts'],
-      dependencies: ['user1Setup'],
+      //dependencies: ['SaveCookiesForUser1'],
     },
     {
-      name: 'user3Setup',
+      //name: 'SaveCookiesForUser3',
       testMatch: ['authSetupForUser3.ts'],
-      dependencies: ['user2Setup'],
+      //dependencies: ['SaveCookiesForUser2'],
     },
     {
-      name: 'chromium',
+      //name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
-      dependencies: ['user3Setup'],
+      //dependencies: ['SaveCookiesForUser3'],
     },
   ],
 });

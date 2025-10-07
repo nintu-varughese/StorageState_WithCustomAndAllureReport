@@ -2,7 +2,12 @@
   "name": "storagestate_lamdatest",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "npx playwright test",
+    "allure:serve": "npx allure serve allure-results",
+    "allure:generate": "npx allure generate allure-results --clean -o allure-report",
+    "allure:open": "npx allure open allure-report"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -11,7 +16,8 @@
     "@playwright/test": "^1.55.1",
     "@types/node": "^24.5.2",
     "allure-commandline": "^2.34.1",
-    "allure-playwright": "^3.4.1"
+    "allure-playwright": "^3.4.1",
+    "allure-single-html-file-js": "^0.0.6"
   },
   "dependencies": {
     "dotenv": "^17.2.2"
